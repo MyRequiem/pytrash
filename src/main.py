@@ -85,7 +85,7 @@ class Main:
                                               self.colors['reset']))
                 continue
 
-            date = datetime.now().strftime("%d.%m.%Y_%I:%M:%S.%f")
+            date = datetime.now().strftime("%d.%m.%Y_%H:%M:%S.%f")
             new_name = '{0}_[{1}]'.format(file_path, date)
             rename(file_path, new_name)
 
