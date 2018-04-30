@@ -1,0 +1,35 @@
+.TH PYTRASH 8 "2018\-04\-30" "System" "Linux User Manual"
+.SH NAME
+pytrash - CLI implementation of the "trash" for Slackware linux
+.SH SYNOPSIS
+pytrash param [target[, target ...]]
+.SH DESCRIPTION
+PyTrash - implementation of the "trash" for Slackware linux:
+ - remove to trash
+ - search in trash
+ - restore from trash
+ - clear trash
+ - show trash size
+
+.SH COMMANDS AND OPTIONS
+The following commands and options are available:
+.SS -h, --help
+\fBPrint this help message and exit
+.SS -d, --del path/to/file_or_dir [path/to/file_or_dir ...]
+\fBMove files/dirs to trash (~/.local/share/Trash/)
+.SS -f, --find pattern
+\fbSearch for files and directories in the trash
+.SS -r, --restore [pattern]
+\fbPrint list of files/dirs on trash with the possibility of their
+ recovery. If the pattern is specified, then only matches with this
+ pattern are displayed
+.SS -c, --clear
+\fbClear trash
+.SS -s, --size
+\fbShow the size of the trash
+.SH AUTHOR
+Vladimir MyRequiem <mrvladislavovich@gmail.com>
+.SH HOMEPAGE
+https://github.com/MyRequiem/pytrash
+.SH COPYRIGHT
+Copyright\(co 2018 Vladimir MyRequiem
