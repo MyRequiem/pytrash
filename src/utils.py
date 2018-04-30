@@ -37,11 +37,6 @@ def get_colors() -> dict:
             'lgreen': '\x1b[1;32m',
             'yellow': '\x1b[0;33m',
             'lyellow': '\x1b[1;33m',
-            # 'blue': '\x1b[0;34m',
-            # 'lblue': '\x1b[1;34m',
-            # 'magenta': '\x1b[0;35m',
-            # 'lmagenta': '\x1b[1;35m',
             'cyan': '\x1b[0;36m',
-            # 'lcyan': '\x1b[1;36m',
             'grey': '\x1b[38;5;247m',
             'reset': '\x1b[0m'}

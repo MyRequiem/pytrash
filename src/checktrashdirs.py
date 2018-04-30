@@ -16,10 +16,7 @@
 check if a trash dirs exists and create its if needed
 """
 
-from os import (
-    path,
-    makedirs
-)
+from os import makedirs, path
 
 from .utils import get_trash_path
 

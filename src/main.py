@@ -17,24 +17,12 @@ main.py
 """
 
 import sys
-from os import (
-    path,
-    remove,
-    rename,
-    walk
-)
-from shutil import (
-    move,
-    rmtree
-)
+from os import path, remove, rename, walk
+from shutil import move, rmtree
 
 from .checktrashdirs import check_trash_dirs
 from .helpmess import show_help_mess
-from .utils import (
-    get_colors,
-    get_full_path,
-    get_trash_path
-)
+from .utils import get_colors, get_full_path, get_trash_path
 
 
 class Main:
