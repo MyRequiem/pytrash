@@ -30,6 +30,13 @@ def get_trash_path() -> list:
             get_full_path('{0}/info'.format(trash))]
 
 
+def get_indent(width1: int, width2: int) -> str:
+    """
+    get space indent for format print
+    """
+    return ' ' * (width2 - width1)
+
+
 def get_colors() -> dict:
     return {'red': '\x1b[0;31m',
             'lred': '\x1b[1;31m',
