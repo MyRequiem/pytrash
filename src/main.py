@@ -218,17 +218,14 @@ class Main:
         if len(self.args) > 1:
             show_help_mess(True)
 
-        global_trash_path = self.get_global_trash_path()
-        choice = input(('{0}Are you sure? All files and directories from\n'
-                        '{1}{2}/{0}\nwill be deleted !!!{3} '
+        choice = input(('{0}All files and directories from '
+                        'trash will be deleted{1} '
                         '[yes/No]: ').format(self.colors['red'],
-                                             self.colors['cyan'],
-                                             global_trash_path,
                                              self.colors['reset']))
         if choice != 'yes':
             print('Canceled')
         else:
-            rmtree(global_trash_path)
+            rmtree(self.get_global_trash_path())
             check_trash_dirs()
             print('{0}Trash cleared{1}'.format(self.colors['green'],
                                                self.colors['reset']))
