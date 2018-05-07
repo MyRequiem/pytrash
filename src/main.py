@@ -174,25 +174,25 @@ class Main:
                     if path.exists(info_file):
                         with open(info_file) as finfo:
                             for line in finfo:
-                                path_to_restore = line
+                                path_for_restore = line
                                 break
 
                         if not finfo.closed:
                             finfo.close()
 
-                        path_to_restore = path.dirname(path_to_restore)
+                        path_for_restore = path.dirname(path_for_restore)
                         print(('Restore {0}{1}{4}\nto {2}{3}{4} '
                                '...').format(self.colors['cyan'],
                                              list_files[choice - 1],
                                              self.colors['yellow'],
-                                             path_to_restore,
+                                             path_for_restore,
                                              self.colors['reset']),
                               end='')
 
                         rename('{0}/{1}'.format(self.trash_path[0],
                                                 list_files[choice - 1]),
                                ('{0}/{1}-'
-                                'restored').format(path_to_restore,
+                                'restored').format(path_for_restore,
                                                    list_files[choice - 1]))
                         remove(info_file)
                         print(' {0}Ok{1}'.format(self.colors['lgreen'],
