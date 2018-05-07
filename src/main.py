@@ -17,7 +17,7 @@ main.py
 """
 
 import sys
-from os import path, remove, rename, walk
+from os import makedirs, path, remove, rename, walk
 from shutil import move, rmtree
 
 from .checktrashdirs import check_trash_dirs
@@ -187,6 +187,9 @@ class Main:
                                              path_for_restore,
                                              self.colors['reset']),
                               end='')
+
+                        if not path.exists(path_for_restore):
+                            makedirs(path_for_restore)
 
                         rename('{0}/{1}'.format(self.trash_path[0],
                                                 list_files[choice - 1]),
