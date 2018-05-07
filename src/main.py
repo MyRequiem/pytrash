@@ -98,9 +98,8 @@ class Main:
                                     self.colors['reset']))
 
             fobj = open('{0}/{1}'.format(self.trash_path[1],
-                                         new_name.split('/')[-1]),
-                        'w')
-            fobj.write(file_path)
+                                         new_name.split('/')[-1]), 'w')
+            fobj.write('{0}\n'.format(file_path))
             fobj.close()
 
     def restore(self):
@@ -174,7 +173,7 @@ class Main:
                     if path.exists(info_file):
                         with open(info_file) as finfo:
                             for line in finfo:
-                                path_for_restore = line
+                                path_for_restore = line.rstrip()
                                 break
 
                         if not finfo.closed:
