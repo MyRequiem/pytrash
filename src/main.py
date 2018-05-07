@@ -22,7 +22,7 @@ from shutil import move, rmtree
 
 from .checktrashdirs import check_trash_dirs
 from .helpmess import show_help_mess
-from .utils import get_colors, get_full_path, get_trash_path
+from .utils import get_colors, get_full_path, get_indent, get_trash_path
 
 
 class Main:
@@ -143,13 +143,18 @@ class Main:
 
         num = 1
         for item in list_files:
-            ftype = 'd' if item in list_dirs else 'f'
-            print(' {0}. {1}[{2}]{3} {4}{5}'.format(num,
-                                                    self.colors['yellow'],
-                                                    ftype,
-                                                    self.colors['cyan'],
-                                                    item,
-                                                    self.colors['reset']))
+            color = self.colors['cyan']
+            end = ''
+            if item in list_dirs:
+                color = self.colors['yellow']
+                end = '/'
+            indent = get_indent(int(len(str(num))), 6)
+            print(' {0}{1}{2}{3}{5}{4}'.format(num,
+                                               indent,
+                                               color,
+                                               item,
+                                               end,
+                                               self.colors['reset']))
             num += 1
 
         if find:
