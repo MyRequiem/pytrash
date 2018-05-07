@@ -1,6 +1,7 @@
 ---
 # PyTrash
 >###### PyTrash is a CLI implementation of the "trash" for Slackware linux
+>###### This program is available on [SlackBuilds.org][1]
 ---
 ##### Main features:
 * remove to trash
@@ -13,11 +14,11 @@
 * Python 3.0+ (available on SlackBuilds.org)
 
 ##### Build and install:
-1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.0.0/pytrash-1.0.0.tar.gz`
-2. `~# tar -xvzf pytrash-1.0.0.tar.gz`
-3. `~# cd pytrash-1.0.0/slackbuild`
+1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.1.0/pytrash-1.1.0.tar.gz`
+2. `~# tar -xvzf pytrash-1.1.0.tar.gz`
+3. `~# cd pytrash-1.1.0/slackbuild`
 4. `~# ./pytrash.SlackBuild`
-5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.0.0-*.t?z`
+5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.0-*.t?z`
 
 ##### Usage:
 ##### -h, --help
@@ -44,3 +45,5 @@ Clear trash
 ##### -s, --size
 
 Show the size of the trash
+
+[1]: https://slackbuilds.org/repository/14.2/system/pytrash/
