@@ -17,8 +17,7 @@ main.py
 """
 
 import sys
-from os import makedirs, path, remove, rename, walk
-from shutil import move, rmtree
+from os import path, rename
 
 from .checktrashdirs import check_trash_dirs
 from .helpmess import show_help_mess
@@ -70,6 +69,9 @@ class Main:
             show_help_mess(True)
 
     def move_to_trash(self):
+        """
+        move file/dir to trash
+        """
         if len(self.args) == 1:
             show_help_mess(True)
 
@@ -95,6 +97,8 @@ class Main:
                                                        file_path,
                                                        self.colors['reset']),
                   end='')
+
+            from shutil import move
             move(new_name, self.trash_path[0])
             print('{0}Ok{1}'.format(self.colors['lgreen'],
                                     self.colors['reset']))
@@ -105,6 +109,9 @@ class Main:
             fobj.close()
 
     def restore(self):
+        """
+        restore file/dir from trash
+        """
         len_args = len(self.args)
         if len_args > 2:
             show_help_mess(True)
@@ -116,6 +123,7 @@ class Main:
 
             find = True
 
+        from os import walk
         all_in_trash = list(walk(self.trash_path[0]))[0]
         list_dirs = all_in_trash[1]
         list_files = all_in_trash[2]
@@ -196,6 +204,7 @@ class Main:
                               end='')
 
                         if not path.exists(path_for_restore):
+                            from os import makedirs
                             makedirs(path_for_restore)
 
                         rename('{0}/{1}'.format(self.trash_path[0],
@@ -203,6 +212,7 @@ class Main:
                                ('{0}/{1}-'
                                 'restored').format(path_for_restore,
                                                    list_files[choice - 1]))
+                        from os import remove
                         remove(info_file)
                         print(' {0}Ok{1}'.format(self.colors['lgreen'],
                                                  self.colors['reset']))
@@ -215,6 +225,9 @@ class Main:
                                                        self.colors['reset']))
 
     def clear(self) -> None:
+        """
+        clear trash
+        """
         if len(self.args) > 1:
             show_help_mess(True)
 
@@ -225,12 +238,16 @@ class Main:
         if choice != 'yes':
             print('Canceled')
         else:
+            from shutil import rmtree
             rmtree(self.get_global_trash_path())
             check_trash_dirs()
             print('{0}Trash cleared{1}'.format(self.colors['green'],
                                                self.colors['reset']))
 
     def get_trash_size(self) -> None:
+        """
+        show trash size
+        """
         if len(self.args) > 1:
             show_help_mess(True)
 
@@ -239,4 +256,7 @@ class Main:
                         shell=True)
 
     def get_global_trash_path(self) -> str:
+        """
+        return '~/.local/share/Trash'
+        """
         return path.dirname(self.trash_path[0])

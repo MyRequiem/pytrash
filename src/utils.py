@@ -18,6 +18,9 @@ Utils
 
 
 def get_full_path(file_path: str) -> str:
+    """
+    get full path
+    """
     from os import path
     if file_path.endswith('/'):
         file_path = ('/').join(file_path.split('/')[:-1])
@@ -25,6 +28,9 @@ def get_full_path(file_path: str) -> str:
 
 
 def get_trash_path() -> list:
+    """
+    get trash path
+    """
     trash = '~/.local/share/Trash'
     return [get_full_path('{0}/files'.format(trash)),
             get_full_path('{0}/info'.format(trash))]
@@ -38,6 +44,9 @@ def get_indent(width1: int, width2: int) -> str:
 
 
 def get_colors() -> dict:
+    """
+    colors
+    """
     return {'red': '\x1b[0;31m',
             'lred': '\x1b[1;31m',
             'green': '\x1b[0;32m',
