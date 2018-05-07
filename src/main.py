@@ -85,8 +85,10 @@ class Main:
                                               self.colors['reset']))
                 continue
 
-            date = datetime.now().strftime("%d.%m.%Y_%H:%M:%S.%f")
-            new_name = '{0}_[{1}]'.format(file_path, date)
+            date = datetime.now().strftime("%d:%m:%y:%H:%M:%S.%f")
+            new_name = '{0}/{1}__{2}'.format(path.dirname(file_path),
+                                             date,
+                                             file_path.split('/')[-1])
             rename(file_path, new_name)
 
             print('Move {0}{1}{2} to trash... '.format(self.colors['cyan'],
@@ -118,7 +120,7 @@ class Main:
         list_dirs = all_in_trash[1]
         list_files = all_in_trash[2]
         list_files.extend(list_dirs)
-        list_files.reverse()
+        list_files.sort(reverse=True)
 
         if not list_files:
             print('{0}Trash is empty{1}'.format(self.colors['green'],
