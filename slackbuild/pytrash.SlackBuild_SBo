@@ -28,7 +28,7 @@
 
 
 PRGNAM=pytrash
-VERSION=${VERSION:-1.0.0}
+VERSION=${VERSION:-1.1.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
