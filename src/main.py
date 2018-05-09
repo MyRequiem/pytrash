@@ -17,7 +17,7 @@ main.py
 """
 
 import sys
-from os import path, rename
+from os import path
 
 from .checktrashdirs import check_trash_dirs
 from .helpmess import show_help_mess
@@ -91,14 +91,14 @@ class Main:
             new_name = '{0}/{1}__{2}'.format(path.dirname(file_path),
                                              date,
                                              file_path.split('/')[-1])
-            rename(file_path, new_name)
+            from shutil import move
+            move(file_path, new_name)
 
             print('Move {0}{1}{2} to trash... '.format(self.colors['cyan'],
                                                        file_path,
                                                        self.colors['reset']),
                   end='')
 
-            from shutil import move
             move(new_name, self.trash_path[0])
             print('{0}Ok{1}'.format(self.colors['lgreen'],
                                     self.colors['reset']))
@@ -207,11 +207,12 @@ class Main:
                             from os import makedirs
                             makedirs(path_for_restore)
 
-                        rename('{0}/{1}'.format(self.trash_path[0],
-                                                list_files[choice - 1]),
-                               ('{0}/{1}-'
-                                'restored').format(path_for_restore,
-                                                   list_files[choice - 1]))
+                        from shutil import move
+                        move('{0}/{1}'.format(self.trash_path[0],
+                                              list_files[choice - 1]),
+                             ('{0}/{1}-'
+                              'restored').format(path_for_restore,
+                                                 list_files[choice - 1]))
                         from os import remove
                         remove(info_file)
                         print(' {0}Ok{1}'.format(self.colors['lgreen'],
