@@ -14,11 +14,11 @@
 * Python 3.0+ (available on SlackBuilds.org)
 
 ##### Build and install:
-1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.1.0/pytrash-1.1.0.tar.gz`
-2. `~# tar -xvzf pytrash-1.1.0.tar.gz`
-3. `~# cd pytrash-1.1.0/slackbuild`
+1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.1.1/pytrash-1.1.1.tar.gz`
+2. `~# tar -xvzf pytrash-1.1.1.tar.gz`
+3. `~# cd pytrash-1.1.1/slackbuild`
 4. `~# ./pytrash.SlackBuild`
-5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.0-*.t?z`
+5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.1-*.t?z`
 
 ##### Usage:
 ##### -h, --help
