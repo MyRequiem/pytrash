@@ -92,7 +92,15 @@ class Main:
                                              date,
                                              file_path.split('/')[-1])
             from shutil import move
-            move(file_path, new_name)
+            try:
+                move(file_path, new_name)
+            except PermissionError:
+                print(('{0}{1}{3}: {2}permission '
+                       'denied!{3}').format(self.colors['cyan'],
+                                            file_path,
+                                            self.colors['red'],
+                                            self.colors['reset']))
+                raise SystemExit
 
             print('Move {0}{1}{2} to trash... '.format(self.colors['cyan'],
                                                        file_path,
