@@ -1,5 +1,8 @@
+1.1.2 [23.06.2018]
+- Fixed PermissionError exception
+
 1.1.1 [12.05.2018]
-- Fix "Invalid cross-device link" error.
+- Fixed "Invalid cross-device link" error.
 os.rename only works if source and destination
 are on the same file system --> shutil.move instead.
 
