@@ -23,7 +23,7 @@ def get_full_path(file_path: str) -> str:
     """
     from os import path
     if file_path.endswith('/'):
-        file_path = ('/').join(file_path.split('/')[:-1])
+        file_path = file_path[:-1]
     return path.abspath(path.expanduser(file_path))
 
 

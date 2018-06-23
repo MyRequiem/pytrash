@@ -26,4 +26,7 @@ from pytrash.main import Main
 
 
 if __name__ == '__main__':
-    sys.exit(Main().start())
+    try:
+        sys.exit(Main().start())
+    except KeyboardInterrupt:
+        pass

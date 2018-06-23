@@ -16,8 +16,9 @@
 main.py
 """
 
+import os
 import sys
-from os import path
+from shutil import move, rmtree
 
 from .checktrashdirs import check_trash_dirs
 from .helpmess import show_help_mess
@@ -79,7 +80,7 @@ class Main:
         for file_path in self.args[1:]:
             file_path = get_full_path(file_path)
 
-            if not path.exists(file_path):
+            if not os.path.exists(file_path):
                 print(('{0}File or directory{1} {2}{0} '
                        'not found{3}').format(self.colors['red'],
                                               self.colors['cyan'],
@@ -88,25 +89,26 @@ class Main:
                 continue
 
             date = datetime.now().strftime("%d:%m:%y:%H:%M:%S.%f")
-            new_name = '{0}/{1}__{2}'.format(path.dirname(file_path),
-                                             date,
-                                             file_path.split('/')[-1])
-            from shutil import move
-            move(file_path, new_name)
+            new_name = '{0}__{1}'.format(date, os.path.basename(file_path))
 
-            print('Move {0}{1}{2} to trash... '.format(self.colors['cyan'],
-                                                       file_path,
-                                                       self.colors['reset']),
-                  end='')
-
-            move(new_name, self.trash_path[0])
-            print('{0}Ok{1}'.format(self.colors['lgreen'],
-                                    self.colors['reset']))
-
-            fobj = open('{0}/{1}'.format(self.trash_path[1],
-                                         new_name.split('/')[-1]), 'w')
-            fobj.write('{0}\n'.format(file_path))
-            fobj.close()
+            # if the file is read and writeable
+            if os.access(file_path, os.R_OK) and os.access(file_path, os.W_OK):
+                move(file_path, '{0}/{1}'.format(self.trash_path[0], new_name))
+                fobj = open('{0}/{1}'.format(self.trash_path[1],
+                                             new_name), 'w')
+                fobj.write('{0}\n'.format(os.path.dirname(file_path)))
+                fobj.close()
+                print(('{0}{1}{2} moved '
+                       'to trash{3}').format(self.colors['cyan'],
+                                             file_path,
+                                             self.colors['grey'],
+                                             self.colors['reset']))
+            else:
+                print(('{0}{1}{3}: {2}permission '
+                       'denied!{3}').format(self.colors['cyan'],
+                                            file_path,
+                                            self.colors['red'],
+                                            self.colors['reset']))
 
     def restore(self):
         """
@@ -185,7 +187,7 @@ class Main:
                 if 0 < choice <= len(list_files):
                     info_file = '{0}/{1}'.format(self.trash_path[1],
                                                  list_files[choice - 1])
-                    if path.exists(info_file):
+                    if os.path.exists(info_file):
                         with open(info_file) as finfo:
                             for line in finfo:
                                 path_for_restore = line.rstrip()
@@ -194,7 +196,6 @@ class Main:
                         if not finfo.closed:
                             finfo.close()
 
-                        path_for_restore = path.dirname(path_for_restore)
                         print(('Restore {0}{1}{4}\nto {2}{3}{4} '
                                '...').format(self.colors['cyan'],
                                              list_files[choice - 1],
@@ -203,16 +204,14 @@ class Main:
                                              self.colors['reset']),
                               end='')
 
-                        if not path.exists(path_for_restore):
+                        if not os.path.exists(path_for_restore):
                             from os import makedirs
                             makedirs(path_for_restore)
 
-                        from shutil import move
                         move('{0}/{1}'.format(self.trash_path[0],
                                               list_files[choice - 1]),
-                             ('{0}/{1}-'
-                              'restored').format(path_for_restore,
-                                                 list_files[choice - 1]))
+                             ('{0}/{1}').format(path_for_restore,
+                                                list_files[choice - 1]))
                         from os import remove
                         remove(info_file)
                         print(' {0}Ok{1}'.format(self.colors['lgreen'],
@@ -239,7 +238,6 @@ class Main:
         if choice != 'yes':
             print('Canceled')
         else:
-            from shutil import rmtree
             rmtree(self.get_global_trash_path())
             check_trash_dirs()
             print('{0}Trash cleared{1}'.format(self.colors['green'],
@@ -260,4 +258,4 @@ class Main:
         """
         return '~/.local/share/Trash'
         """
-        return path.dirname(self.trash_path[0])
+        return os.path.dirname(self.trash_path[0])
