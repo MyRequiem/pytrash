@@ -80,7 +80,15 @@ class Main:
         for file_path in self.args[1:]:
             file_path = get_full_path(file_path)
 
-            if not os.path.exists(file_path):
+            file_is_link = os.path.islink(file_path)
+            broken_link = False
+            if file_is_link:
+                try:
+                    os.stat(file_path)
+                except FileNotFoundError:
+                    broken_link = True
+
+            if not broken_link and not os.path.exists(file_path):
                 print(('{0}File or directory{1} {2}{0} '
                        'not found{3}').format(self.colors['red'],
                                               self.colors['cyan'],
@@ -92,7 +100,9 @@ class Main:
             new_name = '{0}__{1}'.format(date, os.path.basename(file_path))
 
             # if the file is read and writeable
-            if os.access(file_path, os.R_OK) and os.access(file_path, os.W_OK):
+            if (broken_link or
+                    (os.access(file_path, os.R_OK) and
+                     os.access(file_path, os.W_OK))):
                 move(file_path, '{0}/{1}'.format(self.trash_path[0], new_name))
                 fobj = open('{0}/{1}'.format(self.trash_path[1],
                                              new_name), 'w')
