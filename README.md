@@ -11,7 +11,7 @@
 * show trash size
 
 ##### Requirements:
-* Python 3.0+ (available on SlackBuilds.org)
+* Python 3.0+ (available on [SlackBuilds.org][2])
 
 ##### Build and install:
 1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.1.3/pytrash-1.1.3.tar.gz`
@@ -20,30 +20,32 @@
 4. `~# ./pytrash.SlackBuild`
 5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.3-*.t?z`
 
-##### Usage:
+##### Usage: pytrash \<param> [param[, param ...]]
 ##### -h, --help
 
-Print this help message and exit
+Print this help message and exit.
 
-##### -d, --del path/to/file_or_dir [path/to/file_or_dir ...]
+##### -d, --del \<path> [path[ path ...]]
 
-Move files/dirs to trash (~/.local/share/Trash/)
+Move files/dirs to trash (~/.local/share/Trash/).
 
-##### -f, --find pattern
+##### -f, --find \<pattern>
 
-Search for files and directories in the trash
+Search for files and directories in the trash.
 
 ##### -r, --restore [pattern]
 
-Print list of files/dirs on trash with the possibility of their recovery.
-If the pattern is specified, then only matches with this pattern are displayed.
+Print list of files/dirs on trash with the possibility of their
+recovery. If the pattern is specified, then only matches with
+this pattern are displayed.
 
 ##### -c, --clear
 
-Clear trash
+Clear trash.
 
 ##### -s, --size
 
-Show the size of the trash
+Show the size of the trash.
 
 [1]: https://slackbuilds.org/repository/14.2/system/pytrash/
+[2]: https://slackbuilds.org/repository/14.2/python/python3/
