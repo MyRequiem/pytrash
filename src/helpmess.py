@@ -20,22 +20,27 @@ from .utils import get_colors
 
 
 def show_help_mess(error: bool = False) -> None:
-    """Usage: pytrash param [target[, target ...]]
+    """Usage: pytrash <param> [param[, param ...]]
 
     {0}-h, --help{1}
-        Print this help message and exit
-    {0}-d, --del path/to/file_or_dir [path/to/file_or_dir ...]{1}
-        Move files/dirs to trash (~/.local/share/Trash/)
-    {0}-f, --find pattern{1}
-        Search for files and directories in the trash
+        Print this help message and exit.
+
+    {0}-d, --del <path> [path[ path ...]]{1}
+        Move files/dirs to trash (~/.local/share/Trash/).
+
+    {0}-f, --find <pattern>{1}
+        Search for files and directories in the trash.
+
     {0}-r, --restore [pattern]{1}
         Print list of files/dirs on trash with the possibility
         of their recovery. If the pattern is specified, then
-        only matches with this pattern are displayed
+        only matches with this pattern are displayed.
+
     {0}-c, --clear{1}
-        Clear trash
+        Clear trash.
+
     {0}-s, --size{1}
-        Show the size of the trash
+        Show the size of the trash.
 """
 
     colors = get_colors()
