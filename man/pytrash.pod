@@ -1,0 +1,54 @@
+=encoding utf8
+
+=head1 NAME
+
+pytrash - CLI implementation of the "trash" for Slackware linux
+
+=head1 SYNOPSIS
+
+pytrash <param> [param[, param ...]]
+
+=head1 DESCRIPTION
+
+pytrash - implementation of the "trash" for Slackware linux.
+
+Main futeares:
+  - remove to trash
+  - search in trash
+  - restore from trash
+  - clear trash
+  - show trash size
+
+=head1 OPTIONS
+
+B<-h>, B<--help>
+    Print help message and exit.
+
+B<-d>, B<--del> <path> [path[ path ...]]
+    Move files/dirs to trash (~/.local/share/Trash/).
+
+B<-f>, B<--find> <pattern>
+    Search for files and directories in the trash.
+
+B<-r>, B<--restore> [pattern]
+    Print list of files/dirs on trash with the possibility of their
+    recovery. If the pattern is specified, then only matches with
+    this pattern are displayed.
+
+B<-c>, B<--clear>
+    Clear trash.
+
+B<-s>, B<--size>
+    Show the size of the trash.
+
+=head1 AUTHOR
+
+Vladimir MyRequiem <mrvladislavovich@gmail.com>
+
+=head1 HOMEPAGE
+
+https://github.com/MyRequiem/pytrash
+
+=head1 COPYRIGHT
+
+Copyright 2018 Vladimir MyRequiem
