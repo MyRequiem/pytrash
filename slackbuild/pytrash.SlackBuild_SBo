@@ -28,7 +28,7 @@
 
 
 PRGNAM=pytrash
-VERSION=${VERSION:-1.1.4}
+VERSION=${VERSION:-1.1.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -93,7 +93,7 @@ DOCS=$PKG/usr/doc/$PRGNAM-$VERSION
 mkdir -p $DOCS
 cat $CWD/$PRGNAM.SlackBuild > $DOCS/$PRGNAM.SlackBuild
 cat $CWD/README > $DOCS/README
-cp -a AUTHORS ChangeLog.txt INSTALL LICENSE README.md requirements.txt $DOCS
+cp -a AUTHORS ChangeLog.txt INSTALL LICENSE README.md $DOCS
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
