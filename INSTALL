@@ -1,7 +1,7 @@
 Build and install pytrash:
 
-1. ~# wget https://github.com/MyRequiem/pytrash/archive/1.1.4/pytrash-1.1.4.tar.gz
-2. ~# tar -xvzf pytrash-1.1.4.tar.gz
-3. ~# cd pytrash-1.1.4/slackbuild
-4. ~# ./pytrash.SlackBuild
-5. ~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.4-*.t?z
+# wget https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz
+# tar -xvzf pytrash-1.1.5.tar.gz
+# cd pytrash-1.1.5/slackbuild
+# ./pytrash.SlackBuild
+# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.5-*.t?z

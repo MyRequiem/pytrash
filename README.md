@@ -10,15 +10,12 @@
 * clear trash
 * show trash size
 
-##### Requirements:
-* Python 3.0+ (available on [SlackBuilds.org][2])
-
 ##### Build and install:
-1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.1.4/pytrash-1.1.4.tar.gz`
-2. `~# tar -xvzf pytrash-1.1.4.tar.gz`
-3. `~# cd pytrash-1.1.4/slackbuild`
+1. `~# wget https://github.com/MyRequiem/pytrash/archive/1.1.5/pytrash-1.1.5.tar.gz`
+2. `~# tar -xvzf pytrash-1.1.5.tar.gz`
+3. `~# cd pytrash-1.1.5/slackbuild`
 4. `~# ./pytrash.SlackBuild`
-5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.4-*.t?z`
+5. `~# upgradepkg --install-new --reinstall /tmp/pytrash-1.1.5-*.t?z`
 
 ##### Usage: pytrash \<param> [param[, param ...]]
 ##### -h, --help
@@ -47,5 +44,4 @@ Clear trash.
 
 Show the size of the trash.
 
-[1]: https://slackbuilds.org/repository/14.2/system/pytrash/
-[2]: https://slackbuilds.org/repository/14.2/python/python3/
+[1]: https://slackbuilds.org/repository/15.0/system/pytrash/
